@@ -1,0 +1,144 @@
+/* === 全局設定 === */
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* === 外層容器 === */
+.bs-slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  overflow: hidden;
+}
+
+/* === 表單容器（label 組成輪播）=== */
+.bs-slider-wrapper form {
+  white-space: nowrap;
+  transition: transform 0.4s ease-out;
+}
+
+/* === 單一圖片項目 === */
+.bs-slider-wrapper label {
+  display: inline-block;
+  text-align: center;
+  transition: transform 400ms ease-out;
+  position: relative;
+  width: 80%;
+  left: 3.5%;
+  z-index: 1;
+  min-height: 100%;
+}
+
+.bs-slider-wrapper label img {
+  vertical-align: top;
+  width: 90%;
+  height: 100%;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: #ccc 0 0 10px;
+}
+
+/* === input 隱藏 + 選中項目轉移畫面 === */
+.bs-slider-wrapper input {
+  position: absolute;
+  visibility: hidden;
+}
+
+.bs-slider-wrapper input:checked ~ label {
+  z-index: 0;
+}
+
+.bs-slider-wrapper input:nth-of-type(1):checked ~ label {
+  transform: translate3d(8%, 0, 0);
+}
+.bs-slider-wrapper input:nth-of-type(2):checked ~ label {
+  transform: translate3d(-91%, 0, 0);
+}
+.bs-slider-wrapper input:nth-of-type(3):checked ~ label {
+  transform: translate3d(-191%, 0, 0);
+}
+
+/* === 左右箭頭按鈕（含 SVG hover）=== */
+.bs-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 99%;
+  cursor: pointer;
+  user-select: none;
+}
+
+.bs-arrow.left {
+  left: 10px;
+}
+.bs-arrow.right {
+  right: 10px;
+}
+
+.bs-arrow-icon {
+  transition: stroke 0.3s ease;
+}
+
+.bs-arrow:hover .bs-arrow-icon path {
+  stroke: #185a56;
+  fill: #185a56;
+}
+
+/* === 左右漸層遮罩（讓箭頭更清楚）=== */
+.bs-fade-left,
+.bs-fade-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.bs-fade-left {
+  left: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.7), transparent);
+}
+
+.bs-fade-right {
+  right: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.7), transparent);
+}
+
+/* === 響應式裝置 === */
+@media (max-width: 478px) {
+  .bs-slider-wrapper {
+    padding: 10px 0px 0px 0px;
+  }
+
+  .bs-fade-left,
+  .bs-fade-right {
+    width: 100px;
+  }
+
+  .bs-arrow.left {
+    left: 0px;
+  }
+
+  .bs-arrow.right {
+    right: -25px;
+  }
+
+  .bs-slider-wrapper label img {
+    width: 98%;
+  }
+
+  .bs-arrow-icon {
+    width: 50%;
+  }
+}
