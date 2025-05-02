@@ -42,7 +42,7 @@ add_action('admin_init', function() {
       return max(1000, intval($value));
     }
   ]);
-  });
+});
 
 // 設定頁內容
 function bs_render_settings_page() {
@@ -115,6 +115,7 @@ function bs_render_settings_page() {
 </label>
   <?php
 }
+<<<<<<< HEAD
 function bs_sanitize_slider_items($input) {
   if (!is_array($input)) return [];
 
@@ -127,3 +128,5 @@ function bs_sanitize_slider_items($input) {
 
   return $input;
 }
+=======
+>>>>>>> c08285cde9b0eb8ef00901f66477f22a8a216b72
